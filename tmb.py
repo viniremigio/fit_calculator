@@ -10,9 +10,9 @@ nivel_atividade = 1.55 # moderado
 tmb = round((10*peso) + (6.25*altura) - (5*idade) + 5,0)
 total_cal_day = round(tmb*nivel_atividade,0)
 
-if(objetivo == 'perda'):
+if objetivo == 'perda':
     total_cal_goal = total_cal_day * 0.8
-elif(objetivo == 'ganho'):
+elif objetivo == 'ganho':
     total_cal_goal = total_cal_day + 400
 
 print("Peso={}, Altura={}, Idade={}, Objetivo = {}".format(peso, altura, idade, objetivo))
@@ -20,7 +20,7 @@ print("TMB = {}, TotalCalPerDay={}, TotalMaintenance_{} = {}".format(tmb, total_
 
 
 proteina_kcal = 2.5 * peso * 4
-gordura_kcal = round(0.8 * peso * 9,1)
+gordura_kcal = round(0.8 * peso * 9, 1)
 carbo_kcal = (total_cal_goal - (proteina_kcal+gordura_kcal))
 
 print("Macros: proteina_kcal = {}, gordura_kcal = {}, carbo_kcal = {}".format(proteina_kcal, gordura_kcal, carbo_kcal))
