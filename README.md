@@ -7,3 +7,9 @@ A gist of how you can calculate the amount of calories per day you should eat in
 ```
 python tmb.py <weight> <height> <age> <goal: lose|gain>
 ```
+
+## TODO
+- Save locally metrics
+- Apply a weight estimation
+- Unit tests
+- Docker Container
