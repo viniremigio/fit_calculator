@@ -13,4 +13,5 @@ if __name__ == '__main__':
 
     logging.info("Input: Weight = {}kg | Height = {}cm | Age = {} | Goal = {}".format(weight, height, age, goal))
 
-    FitCalculator.run(weight, height, age, goal)
+    fit = FitCalculator()
+    fit.run(weight, height, age, goal)

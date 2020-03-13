@@ -23,10 +23,11 @@ class ComputeDailyDiet:
 
         goal = GoalFactory().get_instance(goal)
 
+        total_cal_day_goal = goal.get_kcal_goal(total_cal_day)
         logging.info("Output: TMB = {} kcal | TotalCalPerDay = {} kcal | TotalMaintenance_{} = {} kcal"
-                     .format(tmb, total_cal_day, goal, goal.get_kcal_goal(total_cal_day)))
+                     .format(tmb, total_cal_day, goal, total_cal_day_goal))
 
-        return goal, total_cal_day
+        return goal, tmb, total_cal_day, total_cal_day_goal
 
     def compute_calories(self, weight, goal, total_cal_day):
         """
@@ -58,3 +59,5 @@ class ComputeDailyDiet:
         carbo_g = round(carbo_kcal/4, 0)
 
         logging.info("Protein = {} g | Fat = {} g | Carbo = {} g".format(protein_g, fat_g, carbo_g))
+
+        return protein_g, fat_g, carbo_g
