@@ -6,7 +6,7 @@ A gist of how you can calculate the amount of calories per day you should eat in
 ## How to run
 
 ```
-python -m fitapp <weight> <height> <age> <goal: lose|gain>
+python -m fitapp <weight> <height> <age> <goal: lose|gain|maitain>
 ```
 
 ## TODO
