@@ -1,2 +1,4 @@
 .idea/
 _pycache_
+fitapp/__pycache__/
+test/__pycache__/
