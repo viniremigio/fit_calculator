@@ -11,6 +11,5 @@ python -m fitapp <weight> <height> <age> <goal: lose|gain|maitain>
 
 ## TODO
 - Save locally metrics **[OK]**
-- Apply a weight estimation
 - Docker Container
 - Unit tests support **[OK]**
