@@ -20,3 +20,4 @@ docker run fitapp:test
 - Save locally metrics **[OK]**
 - Docker Container **[OK]**
 - Unit tests support **[OK]**
+- Pass parameters with argparse
