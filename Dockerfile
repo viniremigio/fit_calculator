@@ -10,4 +10,4 @@ WORKDIR /app/
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python", "-m", "fitapp", "90", "176" ,"35", "lose"]
+ENTRYPOINT ["python", "-m", "fitapp"]
