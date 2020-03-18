@@ -9,7 +9,14 @@ A gist of how you can calculate the amount of calories per day you should eat in
 python -m fitapp <weight> <height> <age> <goal: lose|gain|maitain>
 ```
 
+or if you want to run with **Docker**:
+
+```
+docker build -t fitapp:test .
+docker run fitapp:test
+```
+
 ## TODO
 - Save locally metrics **[OK]**
-- Docker Container
+- Docker Container **[OK]**
 - Unit tests support **[OK]**
