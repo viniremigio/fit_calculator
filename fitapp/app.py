@@ -8,12 +8,12 @@ class FitCalculator:
     def __init__(self):
         self.db = 'data/database.csv'
 
-    def run(self, weight, height, age, goal):
+    def run(self, weight, height, age, goal, activity, protein_rate, fat_rate):
 
         calc = ComputeDailyDiet()
 
-        goal, tmb, kcal, kcal_goal = calc.compute_tmb(weight, height, age, goal)
-        protein_kcal, fat_kcal, carbo_kcal = calc.compute_calories(weight, goal, kcal)
+        goal, tmb, kcal, kcal_goal = calc.compute_tmb(weight, height, age, goal, activity)
+        protein_kcal, fat_kcal, carbo_kcal = calc.compute_calories(weight, goal, kcal, protein_rate, fat_rate)
         protein_g, fat_g, carbo_g = calc.compute_macros(protein_kcal, fat_kcal, carbo_kcal)
 
         with open(self.db, 'a') as f:

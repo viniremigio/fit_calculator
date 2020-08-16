@@ -18,7 +18,7 @@ class ComputeDailyDiet:
 
     logging.getLogger().setLevel(logging.INFO)
 
-    def compute_tmb(self, weight, height, age, goal, activity_level=1.2):
+    def compute_tmb(self, weight, height, age, goal, activity_level):
         """
         TODO Refactor to Strategy pattern
         :param weight:
@@ -42,7 +42,7 @@ class ComputeDailyDiet:
 
         return goal, tmb, total_cal_day, total_cal_day_goal
 
-    def compute_calories(self, weight, goal, total_cal_day):
+    def compute_calories(self, weight, goal, total_cal_day, protein_rate, fat_rate):
         """
 
         :param weight:
@@ -50,8 +50,8 @@ class ComputeDailyDiet:
         :param total_cal_day:
         :return:
         """
-        protein_kcal = 2.5 * weight * 4
-        fat_kcal = round(0.8 * weight * 9, 1)
+        protein_kcal = protein_rate * weight * 4
+        fat_kcal = round(fat_rate * weight * 9, 1)
         carbo_kcal = round(
             (goal.get_kcal_goal(total_cal_day) - (protein_kcal + fat_kcal)), 1
         )
