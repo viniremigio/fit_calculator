@@ -1,4 +1,3 @@
-import logging
 from .goal_factory import GoalFactory
 
 
@@ -16,26 +15,26 @@ class ComputeDailyDiet:
     - Article: https://www.k-state.edu/paccats/Contents/PA/PDF/Physical%20Activity%20and%20Controlling%20Weight.pdf
     """
 
-    logging.getLogger().setLevel(logging.INFO)
-
-    def compute_tmb(self, weight, height, age, goal, activity_level):
+    def compute_tmb(self, weight, height, age, goal, activity_level, gender):
         """
         TODO Refactor to Strategy pattern
-        :param weight:
-        :param height:
-        :param age:
-        :param goal:
-        :param activity_level:
-        :return:
+        Homens: TMB = 66 + (13,8 x peso em kg.) + (5 x altura em cm) - (6,8 x idade em anos). 
+        Mulheres: TMB = 655 + (9,6 x peso em kg.) + (1,8 x altura em cm) - (4,7 x idade em anos)
+        Homens_2: tmb = round((10 * weight) + (6.25 * height) - (5 * age) + 5, 0)
+        https://www.superprof.com.br/blog/por-que-alguns-necessitam-de-mais-energia-que-outros/
         """
-        tmb = round((10 * weight) + (6.25 * height) - (5 * age) + 5, 0)
+        if gender == "male":
+            tmb = round(66.0 + (13.8 * weight) + (5 * height) - (6.8 * age), 0)
+        elif gender == "female":
+            tmb = round(655 + (9.6 * weight) + (1.8 * height) - (4.7 * age), 0)
+
         total_cal_day = round(tmb * activity_level, 0)
 
         goal = GoalFactory().get_instance(goal)
 
         total_cal_day_goal = goal.get_kcal_goal(total_cal_day)
-        logging.info(
-            "Output: TMB = {} kcal | TotalCalPerDay = {} kcal | TotalMaintenance_{} = {} kcal".format(
+        print(
+            "\nOutput:\nTMB = {} kcal\nTotalCalPerDay = {} kcal\nTotalMaintenance_{} = {} kcal".format(
                 tmb, total_cal_day, goal, total_cal_day_goal
             )
         )
@@ -56,7 +55,7 @@ class ComputeDailyDiet:
             (goal.get_kcal_goal(total_cal_day) - (protein_kcal + fat_kcal)), 1
         )
 
-        logging.info(
+        print(
             "Calories: Protein = {} kcal | Fat = {} | Carbo = {} kcal".format(
                 protein_kcal, fat_kcal, carbo_kcal
             )
@@ -76,8 +75,8 @@ class ComputeDailyDiet:
         fat_g = round(fat_kcal / 9, 0)
         carbo_g = round(carbo_kcal / 4, 0)
 
-        logging.info(
-            "Protein = {} g | Fat = {} g | Carbo = {} g".format(
+        print(
+            "Protein = {} g\nFat = {} g\nCarbohydrates = {} g".format(
                 protein_g, fat_g, carbo_g
             )
         )
